@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'util/app_route.dart';
+
 class Inicio extends StatelessWidget {
   final moveis = <Map>[
     {
@@ -57,9 +59,14 @@ class Inicio extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Inicio'),
+        title: const Text('Inicio'),
       ),
-      body: Text('Lojinha'),
+      body: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, AppRoute.detalhes);
+        },
+        child: const Text('Vamos para os detalhes'),
+      ),
     );
   }
 }

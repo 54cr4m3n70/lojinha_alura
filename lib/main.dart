@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lojinha_alura/inicio.dart';
+import 'package:lojinha_alura/pages/detalhes.dart';
+
+import 'inicio.dart';
+import 'pages/carrinho.dart';
+import 'util/app_route.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +17,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Inicio(),
+      initialRoute: AppRoute.inicio,
+      routes: {
+        AppRoute.inicio: (context) => Inicio(),
+        AppRoute.carrinho: (context) => const Carrinho(),
+        AppRoute.detalhes: (context) => const Detalhes(),
+      },
     );
   }
 }
