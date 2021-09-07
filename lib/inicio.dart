@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lojinha_alura/widgets/appbar_custom.dart';
 
 import 'util/app_route.dart';
 
@@ -58,8 +59,8 @@ class Inicio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Inicio'),
+      appBar: AppBarCustom(
+        titulo: 'Lojinha Alura',
       ),
       body: ElevatedButton(
         onPressed: () {
