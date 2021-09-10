@@ -24,7 +24,7 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
       centerTitle: true,
       actions: [
         Visibility(
-          visible: isPageCarrinho,
+          visible: !isPageCarrinho,
           child: BotaoCarrinho(),
         ),
       ],
