@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lojinha_alura/widgets/appbar_custom.dart';
+import 'package:lojinha_alura/widgets/grid_produtos.dart';
 
 import 'util/app_route.dart';
 
 class Inicio extends StatelessWidget {
-  final moveis = <Map>[
+  final List moveis = [
     {
       "titulo": "Mesa",
       "preco": 300,
@@ -59,16 +60,12 @@ class Inicio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBarCustom(
-        titulo: 'Lojinha Alura',
-      ),
-      body: ElevatedButton(
-        onPressed: () {
-          Navigator.pushNamed(context, AppRoute.detalhes);
-        },
-        child: const Text('Vamos para os detalhes'),
-      ),
-    );
+        backgroundColor: Colors.grey[200],
+        appBar: AppBarCustom(
+          titulo: 'Lojinha Alura',
+        ),
+        body: GridProdutos(
+          moveis: moveis,
+        ));
   }
 }
