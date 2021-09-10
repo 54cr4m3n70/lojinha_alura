@@ -22,7 +22,12 @@ class AppBarCustom extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       centerTitle: true,
-      actions: [isPageCarrinho ? Container() : BotaoCarrinho()],
+      actions: [
+        Visibility(
+          visible: isPageCarrinho,
+          child: BotaoCarrinho(),
+        ),
+      ],
     );
   }
 
