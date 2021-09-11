@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '/model/movel.dart';
+import '/widgets/elemento_grid_produtos.dart';
+
 class GridProdutos extends StatelessWidget {
   final List moveis;
   const GridProdutos({Key? key, required this.moveis}) : super(key: key);
@@ -8,13 +11,13 @@ class GridProdutos extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+        crossAxisCount: 2,
       ),
       itemCount: moveis.length,
       itemBuilder: (BuildContext context, int index) {
-        final movel = moveis[index];
-        return Container(
-          child: Text('$movel'),
+        final movel = Movel.fromJson(moveis[index]);
+        return ElementoGridProdutos(
+          movel: movel,
         );
       },
     );
