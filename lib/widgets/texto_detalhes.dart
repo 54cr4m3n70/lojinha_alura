@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 
 class TextoDetalhes extends StatelessWidget {
   final String texto;
-  const TextoDetalhes({Key? key, required this.texto}) : super(key: key);
+  final TextStyle? estilo;
+  const TextoDetalhes({Key? key, required this.texto, this.estilo})
+      : super(key: key);
+
+  Widget _estiloTexto(String texto) {
+    if (estilo != null) return Text(texto, style: estilo);
+
+    return Text(texto);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +20,7 @@ class TextoDetalhes extends StatelessWidget {
         right: 16,
         top: 10,
       ),
-      child: Text(texto),
+      child: _estiloTexto(texto),
     );
   }
 }

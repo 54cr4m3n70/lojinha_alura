@@ -18,6 +18,20 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor: PaletasCores.litas,
+        textTheme: TextTheme(
+          headline1: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Alata',
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+          headline2: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Alata',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
       ),
       initialRoute: AppRoute.inicio,
       routes: {
