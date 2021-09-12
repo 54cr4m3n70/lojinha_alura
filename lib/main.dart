@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lojinha_alura/pages/detalhes.dart';
 
 import 'inicio.dart';
+import 'model/movel.dart';
 import 'pages/carrinho.dart';
 import 'util/app_route.dart';
 
@@ -21,7 +22,16 @@ class MyApp extends StatelessWidget {
       routes: {
         AppRoute.inicio: (context) => Inicio(),
         AppRoute.carrinho: (context) => const Carrinho(),
-        AppRoute.detalhes: (context) => const Detalhes(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == AppRoute.detalhes) {
+          final arguments = settings.arguments as Movel;
+          return MaterialPageRoute(
+            builder: (context) => Detalhes(
+              movel: arguments,
+            ),
+          );
+        }
       },
     );
   }
