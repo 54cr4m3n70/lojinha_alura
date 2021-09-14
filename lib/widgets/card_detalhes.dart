@@ -8,7 +8,13 @@ import '/widgets/texto_detalhes.dart';
 
 class CardDetalhes extends StatelessWidget {
   final Movel movel;
-  const CardDetalhes({Key? key, required this.movel}) : super(key: key);
+  final Function atualizaPagina;
+
+  const CardDetalhes({
+    Key? key,
+    required this.movel,
+    required this.atualizaPagina,
+  }) : super(key: key);
 
   formatacaoReais(int preco) {
     final currencyReais = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
@@ -56,5 +62,6 @@ class CardDetalhes extends StatelessWidget {
 
   _adicionarItemCarrinho(ItemCarrinho item) {
     Inicio.itensCarrinho.add(item);
+    atualizaPagina();
   }
 }

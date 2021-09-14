@@ -5,7 +5,7 @@ import 'widgets/appbar_custom.dart';
 import 'widgets/grid_produtos.dart';
 
 class Inicio extends StatelessWidget {
-  static const itensCarrinho = <ItemCarrinho>[];
+  static var itensCarrinho = <ItemCarrinho>[];
   final List moveis = [
     {
       "titulo": "Mesa",
