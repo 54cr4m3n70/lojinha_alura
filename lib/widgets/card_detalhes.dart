@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:lojinha_alura/model/item_carrinho.dart';
 
+import '../inicio.dart';
 import '/model/movel.dart';
 import '/widgets/texto_detalhes.dart';
 
@@ -38,7 +40,10 @@ class CardDetalhes extends StatelessWidget {
                     backgroundColor: Theme.of(context).primaryColor,
                     primary: Colors.white,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    _adicionarItemCarrinho(
+                        ItemCarrinho(movel: movel, quantidade: 1));
+                  },
                   child: Text('Comprar'),
                 )
               ],
@@ -47,5 +52,9 @@ class CardDetalhes extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _adicionarItemCarrinho(ItemCarrinho item) {
+    Inicio.itensCarrinho.add(item);
   }
 }
