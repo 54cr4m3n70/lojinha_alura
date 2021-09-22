@@ -1,18 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import 'package:lojinha_alura/inicio.dart';
 import 'package:lojinha_alura/model/item_carrinho.dart';
 import 'package:lojinha_alura/model/movel.dart';
 
-class ListaCarrinho extends StatelessWidget {
+class ListaCarrinho extends StatefulWidget {
+  final Function atualiza;
+  ListaCarrinho({
+    Key? key,
+    required this.atualiza,
+  }) : super(key: key);
+
+  @override
+  State<ListaCarrinho> createState() => _ListaCarrinhoState();
+}
+
+class _ListaCarrinhoState extends State<ListaCarrinho> {
   final List<ItemCarrinho> carrinho = Inicio.itensCarrinho;
-  ListaCarrinho({Key? key}) : super(key: key);
+  final formatacaoReais = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
 
   _aumentarQuantidade(ItemCarrinho item) {
-    item.quantidade++;
+    setState(() {
+      item.quantidade++;
+    });
   }
 
   _dimnuiQuantidade(ItemCarrinho item) {
-    item.quantidade--;
+    if (item.quantidade > 1) {
+      setState(() {
+        item.quantidade--;
+        widget.atualiza();
+      });
+    } else {
+      _removerItem(item);
+    }
+  }
+
+  _removerItem(ItemCarrinho item) {
+    setState(() {
+      Inicio.itensCarrinho.remove(item);
+      widget.atualiza();
+    });
   }
 
   @override
@@ -28,9 +57,12 @@ class ListaCarrinho extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               child: Row(
                 children: [
-                  Image.asset(
-                    'lib/assets/imagens/${movel.foto}',
-                    height: 92,
+                  Expanded(
+                    child: Image.asset(
+                      'lib/assets/imagens/${movel.foto}',
+                      height: 92,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   Expanded(
                     child: Container(
@@ -40,11 +72,14 @@ class ListaCarrinho extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(movel.titulo),
+                          Text(
+                            movel.titulo,
+                            style: Theme.of(context).textTheme.headline3,
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('${movel.preco}'),
+                              Text(formatacaoReais.format(movel.preco)),
                               Row(
                                 children: [
                                   GestureDetector(
