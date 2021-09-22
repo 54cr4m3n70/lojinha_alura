@@ -19,19 +19,24 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: PaletasCores.litas,
         textTheme: TextTheme(
-          headline1: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Alata',
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-          headline2: TextStyle(
-            fontSize: 20,
-            fontFamily: 'Alata',
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
+            headline1: TextStyle(
+              fontSize: 20,
+              fontFamily: 'Alata',
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            headline2: TextStyle(
+              fontSize: 20,
+              fontFamily: 'Alata',
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+            headline3: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alata',
+              color: Colors.black,
+            )),
       ),
       initialRoute: AppRoute.inicio,
       routes: {
