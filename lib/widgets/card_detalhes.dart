@@ -47,8 +47,10 @@ class CardDetalhes extends StatelessWidget {
                     primary: Colors.white,
                   ),
                   onPressed: () {
-                    _adicionarItemCarrinho(
-                        ItemCarrinho(movel: movel, quantidade: 1));
+                    _verificarListaCarrinho(
+                      Inicio.itensCarrinho,
+                      ItemCarrinho(movel: movel, quantidade: 1),
+                    );
                   },
                   child: Text('Comprar'),
                 )
@@ -60,8 +62,19 @@ class CardDetalhes extends StatelessWidget {
     );
   }
 
-  _adicionarItemCarrinho(ItemCarrinho item) {
-    Inicio.itensCarrinho.add(item);
+  void _adicionarItemCarrinho(ItemCarrinho item) {
+    Inicio.itensCarrinho.contains(item.movel)
+        ? Inicio.itensCarrinho[Inicio.itensCarrinho.indexOf(item)].quantidade++
+        : Inicio.itensCarrinho.add(item);
     atualizaPagina();
+  }
+
+  void _verificarListaCarrinho(List<ItemCarrinho> lista, ItemCarrinho item) {
+    int indiceMovel = lista.indexWhere((item) => item.movel == movel);
+    if (indiceMovel >= 0) {
+      lista[indiceMovel].quantidade = lista[indiceMovel].quantidade + 1;
+    } else {
+      _adicionarItemCarrinho(item);
+    }
   }
 }
