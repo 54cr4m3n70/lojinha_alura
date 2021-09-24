@@ -4,8 +4,14 @@ import 'model/item_carrinho.dart';
 import 'widgets/appbar_custom.dart';
 import 'widgets/grid_produtos.dart';
 
-class Inicio extends StatelessWidget {
+class Inicio extends StatefulWidget {
   static var itensCarrinho = <ItemCarrinho>[];
+
+  @override
+  State<Inicio> createState() => _InicioState();
+}
+
+class _InicioState extends State<Inicio> {
   final List moveis = [
     {
       "titulo": "Mesa",
@@ -97,10 +103,15 @@ class Inicio extends StatelessWidget {
           Flexible(
             child: GridProdutos(
               moveis: moveis,
+              atualiza: atualiza,
             ),
           ),
         ],
       ),
     );
+  }
+
+  void atualiza() {
+    setState(() {});
   }
 }
