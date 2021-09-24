@@ -8,13 +8,17 @@ import '/model/movel.dart';
 
 class ElementoGridProdutos extends StatelessWidget {
   final Movel movel;
-  const ElementoGridProdutos({Key? key, required this.movel}) : super(key: key);
+  final Function atualiza;
+  const ElementoGridProdutos(
+      {Key? key, required this.movel, required this.atualiza})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, AppRoute.detalhes, arguments: movel);
+        Navigator.pushNamed(context, AppRoute.detalhes, arguments: movel)
+            .then((value) => atualiza);
       },
       child: Container(
         decoration: BoxDecoration(boxShadow: [
