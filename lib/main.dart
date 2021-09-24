@@ -36,6 +36,16 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontFamily: 'Alata',
               color: Colors.black,
+            ),
+            headline4: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            headline5: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w200,
+              color: Colors.black,
             )),
       ),
       initialRoute: AppRoute.inicio,

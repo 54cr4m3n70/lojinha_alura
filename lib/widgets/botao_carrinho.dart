@@ -3,14 +3,20 @@ import 'package:lojinha_alura/inicio.dart';
 import 'package:lojinha_alura/util/app_route.dart';
 import 'package:lojinha_alura/widgets/indicador_botao_carrinho.dart';
 
-class BotaoCarrinho extends StatelessWidget {
+class BotaoCarrinho extends StatefulWidget {
   const BotaoCarrinho({Key? key}) : super(key: key);
 
+  @override
+  State<BotaoCarrinho> createState() => _BotaoCarrinhoState();
+}
+
+class _BotaoCarrinhoState extends State<BotaoCarrinho> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, AppRoute.carrinho);
+        Navigator.pushNamed(context, AppRoute.carrinho)
+            .then((value) => setState(() {}));
       },
       child: Container(
         decoration: BoxDecoration(

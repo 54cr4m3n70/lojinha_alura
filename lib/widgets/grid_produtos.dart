@@ -5,7 +5,9 @@ import '/widgets/elemento_grid_produtos.dart';
 
 class GridProdutos extends StatelessWidget {
   final List moveis;
-  const GridProdutos({Key? key, required this.moveis}) : super(key: key);
+  final Function atualiza;
+  const GridProdutos({Key? key, required this.moveis, required this.atualiza})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class GridProdutos extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         final movel = Movel.fromJson(moveis[index]);
         return ElementoGridProdutos(
+          atualiza: atualiza,
           movel: movel,
         );
       },
